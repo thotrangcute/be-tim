@@ -1,14 +1,14 @@
 const messages = [
-  "1. Bé iu là ánh nắng của me 💛",
-  "2. Me nghĩ về bé mỗi ngày 💭",
-  "3. Nụ cười bé làm me tan chảy 🥰",
+  "1. Bé iu là ánh nắng của Anh 💛",
+  "2. Anh nghĩ về bé mỗi ngày 💭",
+  "3. Nụ cười bé làm Anh tan chảy 🥰",
   "4. Bé là điều dễ thương nhất trên đời 🌸",
-  "5. Không ai thương bé như me đâu đó 😚",
+  "5. Không ai thương bé như Anh đâu đó 😚",
   "6. Mỗi ngày bên bé là phép màu ✨",
   "7. Bé cute như mèo con lun 🐱",
-  "8. Me muốn ôm bé mãi mãi 💞",
-  "9. Bé là động lực sống của me 💘",
-  "10. Me yêu bé... nhiều hơn cả vũ trụ này 🚀",
+  "8. Anh muốn ôm bé mãi mãi 💞",
+  "9. Bé là động lực sống của Anh 💘",
+  "10. Anh yêu bé... nhiều hơn cả vũ trụ này 🚀",
 ];
 
 // Rơi từng dòng yêu thương
