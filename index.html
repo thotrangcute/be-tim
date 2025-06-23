@@ -2,10 +2,212 @@
 <html lang="vi">
   <head>
     <meta charset="UTF-8" />
-    <title>Trang yêu thương cho bé iu 💖</title>
-    <link rel="stylesheet" href="./main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chúc Bé Thi Tốt 💖</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --main-color: #ff69b4;
+        --bg-gradient: linear-gradient(135deg, #fff0f5, #e0f7fa);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        font-family: "Pacifico", cursive;
+        background: var(--bg-gradient);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: var(--main-color);
+        text-shadow: 0 0 10px #fff, 0 0 20px var(--main-color);
+        animation: pulse 2s infinite;
+        margin-bottom: 10px;
+      }
+
+      #typed-text {
+        color: #d63384;
+        font-size: 1.4rem;
+        text-align: center;
+        max-width: 90%;
+        min-height: 100px;
+        white-space: pre-line;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .hearts {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #ff69b4;
+        transform: rotate(45deg);
+        animation: float 6s linear infinite;
+        opacity: 0.7;
+      }
+
+      .heart::before,
+      .heart::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background-color: #ff69b4;
+        border-radius: 50%;
+      }
+
+      .heart::before {
+        top: -10px;
+        left: 0;
+      }
+
+      .heart::after {
+        left: -10px;
+        top: 0;
+      }
+
+      @keyframes float {
+        0% {
+          bottom: -20px;
+          transform: translateX(0) rotate(45deg);
+        }
+        100% {
+          bottom: 100%;
+          transform: translateX(50px) rotate(45deg);
+        }
+      }
+
+      button {
+        margin-top: 30px;
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border: none;
+        border-radius: 30px;
+        background-color: #ff1493;
+        color: white;
+        cursor: pointer;
+        box-shadow: 0 0 15px #ff69b4;
+        transition: transform 0.2s ease;
+      }
+
+      button:hover {
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 1.8rem;
+        }
+        #typed-text {
+          font-size: 1.1rem;
+        }
+        button {
+          font-size: 1rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <script src="main.js"></script>
+    <div class="hearts" id="hearts-container"></div>
+
+    <h1>💌 Bé iu ơi 💌</h1>
+    <div id="typed-text"></div>
+
+    <button onclick="start()">Bấm để nghe nhạc 🎶</button>
+
+    <audio id="music" loop>
+      <source
+        src="https://cdn.pixabay.com/audio/2023/05/04/audio_d4bb8f2f25.mp3"
+        type="audio/mpeg"
+      />
+    </audio>
+
+    <script>
+      // Gõ chữ tự động
+      const text = `Chúc bé iu thi thật tốt nhé 📝💖\n
+Tớ tin vào cậu rất nhiều đó! 💪\n
+Thi xong dẫn đi ăn kem nhaaa 🍦\n
+Mãi iu bé nhiều nhiều 😘`;
+
+      const textContainer = document.getElementById("typed-text");
+      let index = 0;
+
+      function typeLine() {
+        if (index < text.length) {
+          textContainer.innerHTML += text.charAt(index);
+          index++;
+          setTimeout(typeLine, 50);
+        }
+      }
+
+      // Trái tim bay
+      const container = document.getElementById("hearts-container");
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = Math.random() * 2 + 4 + "s";
+        container.appendChild(heart);
+        setTimeout(() => heart.remove(), 6000);
+      }
+      setInterval(createHeart, 300);
+
+      // Phát nhạc và bắt đầu gõ chữ
+      const music = document.getElementById("music");
+      function start() {
+        music.play();
+        if (index === 0) {
+          typeLine();
+        }
+      }
+    </script>
   </body>
 </html>
